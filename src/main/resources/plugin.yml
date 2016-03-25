@@ -1,0 +1,9 @@
+name: Pregenner
+description: A plugin to pregen uhc worlds.
+version: 1.1.2
+main: com.igniteuhc.pregenner.Main
+
+commands:
+  preload:
+    description: Pregen a world.
+    aliases: [pload]
