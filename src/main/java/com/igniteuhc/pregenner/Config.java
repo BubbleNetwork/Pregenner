@@ -29,7 +29,7 @@ public class Config
   private static Main plugin;
   private static FileConfiguration cfg = null;
   private static Logger wbLog = null;
-  public static volatile DecimalFormat coord = new DecimalFormat("0.0");
+  public static volatile DecimalFormat coord = new DecimalFormat("#.#");
   private static int borderTask = -1;
   public static volatile WorldFillTask fillTask = null;
   private static Runtime rt = Runtime.getRuntime();

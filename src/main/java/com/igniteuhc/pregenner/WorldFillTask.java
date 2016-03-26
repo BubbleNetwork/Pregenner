@@ -164,7 +164,7 @@ public class WorldFillTask
       if (now > this.lastReport + 5000L) {
         reportProgress();
       }
-      double perc = (this.reportTotal + this.reportNum) / this.reportTarget * 100.0D;
+      double perc = ((double)(this.reportTotal + this.reportNum) / (double)this.reportTarget) * 100.0D;
       if (perc > 100.0D) {
         perc = 100.0D;
       }
@@ -173,7 +173,7 @@ public class WorldFillTask
         CraftPlayer craft = (CraftPlayer)online;
         
         IChatBaseComponent actionJSON = ChatSerializer.a("{text:\"§7Pregenning '§a" + this.world.getName() + "§7' (§6" + (
-          this.reportTotal + this.reportNum) + " §7total, §a~" + 
+          this.reportTotal + this.reportNum) + " §7/§6 " + reportTarget + "§7) total, §a~" +
           Config.coord.format(perc) + "%" + "§7)\"}");
         
         PacketPlayOutChat actionPacket = new PacketPlayOutChat(actionJSON, (byte)2);
