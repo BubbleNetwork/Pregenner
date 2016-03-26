@@ -31,7 +31,7 @@ public class WorldFileData
       (!newData.regionFolder.isDirectory()))
     {
       File[] possibleDimFolders = newData.world.getWorldFolder()
-        .listFiles(new DimFolderFileFilter());
+        .listFiles(new DimFolderFileFilter(null));
       File[] arrayOfFile1;
       int j = (arrayOfFile1 = possibleDimFolders).length;
       for (int i = 0; i < j; i++)

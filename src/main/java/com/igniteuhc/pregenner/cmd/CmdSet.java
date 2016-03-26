@@ -29,11 +29,6 @@ public class CmdSet
   
   public void execute(CommandSender sender, Player player, List<String> params, String worldName)
   {
-    double z;
-    double x;
-    int radiusZ;
-    int radiusX;
-
     if ((params.size() == 1) && (player == null))
     {
       sendErrorAndHelp(sender, "You have not provided a sufficient number of parameters.");
@@ -74,11 +69,12 @@ public class CmdSet
     int radiusCount = params.size();
     try
     {
+      double z;
       if (((String)params.get(params.size() - 1)).equalsIgnoreCase("spawn"))
       {
         Location loc = sender.getServer().getWorld(worldName).getSpawnLocation();
-        x = loc.getX();
-        z = loc.getZ();
+        double x = loc.getX();
+        double z = loc.getZ();
         radiusCount--;
       }
       else if ((params.size() > 2) && (((String)params.get(params.size() - 2)).equalsIgnoreCase("player")))
@@ -90,22 +86,24 @@ public class CmdSet
           return;
         }
         worldName = playerT.getWorld().getName();
-        x = playerT.getLocation().getX();
-        z = playerT.getLocation().getZ();
+        double x = playerT.getLocation().getX();
+        double z = playerT.getLocation().getZ();
         radiusCount -= 2;
       }
       else if ((player == null) || (radiusCount > 2))
       {
-        x = Double.parseDouble((String)params.get(params.size() - 2));
-        z = Double.parseDouble((String)params.get(params.size() - 1));
+        double x = Double.parseDouble((String)params.get(params.size() - 2));
+        double z = Double.parseDouble((String)params.get(params.size() - 1));
         radiusCount -= 2;
       }
       else
       {
-        x = player.getLocation().getX();
+        double x = player.getLocation().getX();
         z = player.getLocation().getZ();
       }
-      radiusX = Integer.parseInt((String)params.get(0));
+      int radiusX = Integer.parseInt((String)params.get(0));
+      int radiusZ;
+      int radiusZ;
       if (radiusCount < 2) {
         radiusZ = radiusX;
       } else {
@@ -121,7 +119,10 @@ public class CmdSet
     {
       sendErrorAndHelp(sender, "Radius value(s) must be integers and x and z values must be numerical."); return;
     }
-
+    double z;
+    double x;
+    int radiusZ;
+    int radiusX;
     Config.setBorder(worldName, radiusX, radiusZ, x, z);
   }
 }
